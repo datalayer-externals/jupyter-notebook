@@ -1,4 +1,4 @@
-from ..prometheus.metrics import HTTP_REQUEST_DURATION_SECONDS
+# from ..prometheus.metrics import HTTP_REQUEST_DURATION_SECONDS
 
 
 def prometheus_log_method(handler):
@@ -16,9 +16,9 @@ def prometheus_log_method(handler):
     This function should be either the value of or called from a function
     that is the 'log_function' tornado setting. This makes it get called
     at the end of every request, allowing us to record the metrics we need.
-    """
     HTTP_REQUEST_DURATION_SECONDS.labels(
         method=handler.request.method,
         handler='{}.{}'.format(handler.__class__.__module__, type(handler).__name__),
         status_code=handler.get_status()
     ).observe(handler.request.request_time())
+    """

@@ -72,6 +72,9 @@ from notebook import (
     __version__,
 )
 
+from jupyter_server.extension.application import ExtensionApp
+from jupyter_server.extension.application import ExtensionAppJinjaMixin
+
 
 from .base.handlers import Template404, RedirectWithParams
 from .log import log_request
@@ -674,9 +677,17 @@ aliases.update({
 # NotebookApp
 #-----------------------------------------------------------------------------
 
-class NotebookApp(JupyterApp):
+class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
 
-    name = 'jupyter-notebook'
+    name = 'notebook'
+    extension_url = "/notebook/tree"
+    # Should your extension expose other server extensions when launched directly?
+    load_other_extensions = True
+    # Local path to static files directory.
+    static_paths = [DEFAULT_STATIC_FILES_PATH]
+    # Local path to templates directory.
+    template_paths = DEFAULT_TEMPLATE_PATH_LIST
+
     version = __version__
     description = _("""The Jupyter HTML Notebook.
 
@@ -2140,7 +2151,7 @@ class NotebookApp(JupyterApp):
     def initialize(self, argv=None):
         self._init_asyncio_patch()
 
-        super().initialize(argv)
+        super().initialize()
         self.init_logging()
         if self._dispatching:
             return
@@ -2393,6 +2404,18 @@ class NotebookApp(JupyterApp):
             self.http_server.stop()
             self.io_loop.stop()
         self.io_loop.add_callback(_stop)
+
+
+
+    def initialize_templates(self):
+        pass
+
+    def initialize_settings(self):
+        pass
+
+    def initialize_handlers(self):
+        pass
+
 
 
 def list_running_servers(runtime_dir=None):

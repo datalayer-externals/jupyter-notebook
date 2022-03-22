@@ -15,7 +15,7 @@ from tornado import web
 from tornado.ioloop import IOLoop, PeriodicCallback
 from traitlets import Integer, validate
 from traitlets.config import LoggingConfigurable
-from ..prometheus.metrics import TERMINAL_CURRENTLY_RUNNING_TOTAL
+# from ..prometheus.metrics import TERMINAL_CURRENTLY_RUNNING_TOTAL
 
 
 class TerminalManager(LoggingConfigurable, NamedTermManager):
@@ -60,7 +60,7 @@ class TerminalManager(LoggingConfigurable, NamedTermManager):
         term.last_activity = utcnow()
         model = self.get_terminal_model(name)
         # Increase the metric by one because a new terminal was created
-        TERMINAL_CURRENTLY_RUNNING_TOTAL.inc()
+#        TERMINAL_CURRENTLY_RUNNING_TOTAL.inc()
         # Ensure culler is initialized
         self._initialize_culler()
         return model
@@ -75,9 +75,11 @@ class TerminalManager(LoggingConfigurable, NamedTermManager):
         models = [self.get_terminal_model(name) for name in self.terminals]
 
         # Update the metric below to the length of the list 'terms'
+        """
         TERMINAL_CURRENTLY_RUNNING_TOTAL.set(
             len(models)
         )
+        """
         return models
 
     async def terminate(self, name, force=False):
@@ -87,7 +89,7 @@ class TerminalManager(LoggingConfigurable, NamedTermManager):
 
         # Decrease the metric below by one
         # because a terminal has been shutdown
-        TERMINAL_CURRENTLY_RUNNING_TOTAL.dec()
+#        TERMINAL_CURRENTLY_RUNNING_TOTAL.dec()
 
     async def terminate_all(self):
         """Terminate all terminals."""

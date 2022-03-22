@@ -25,7 +25,7 @@ from notebook.utils import maybe_future, to_os_path, exists
 from notebook._tz import utcnow, isoformat
 from ipython_genutils.py3compat import getcwd
 
-from notebook.prometheus.metrics import KERNEL_CURRENTLY_RUNNING_TOTAL
+# from notebook.prometheus.metrics import KERNEL_CURRENTLY_RUNNING_TOTAL
 
 # Since use of AsyncMultiKernelManager is optional at the moment, don't require appropriate jupyter_client.
 # This will be confirmed at runtime in notebookapp.  The following block can be removed once the jupyter_client's
@@ -186,9 +186,11 @@ class MappingKernelManager(MultiKernelManager):
 
             # Increase the metric of number of kernels running
             # for the relevant kernel type by 1
+            """
             KERNEL_CURRENTLY_RUNNING_TOTAL.labels(
                 type=self._kernels[kernel_id].kernel_name
             ).inc()
+            """
 
         else:
             self._check_kernel_id(kernel_id)
@@ -297,9 +299,11 @@ class MappingKernelManager(MultiKernelManager):
 
         # Decrease the metric of number of kernels
         # running for the relevant kernel type by 1
+        """
         KERNEL_CURRENTLY_RUNNING_TOTAL.labels(
             type=self._kernels[kernel_id].kernel_name
         ).dec()
+        """
 
         self.pinned_superclass.shutdown_kernel(self, kernel_id, now=now, restart=restart)
         # Unlike its async sibling method in AsyncMappingKernelManager, removing the kernel_id
@@ -508,9 +512,11 @@ class AsyncMappingKernelManager(MappingKernelManager, AsyncMultiKernelManager):
 
         # Decrease the metric of number of kernels
         # running for the relevant kernel type by 1
+        """
         KERNEL_CURRENTLY_RUNNING_TOTAL.labels(
             type=self._kernels[kernel_id].kernel_name
         ).dec()
+        """
 
         await self.pinned_superclass.shutdown_kernel(self, kernel_id, now=now, restart=restart)
         # Remove kernel_id from the connections dictionary only after kernel has been shutdown,

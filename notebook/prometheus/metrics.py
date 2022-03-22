@@ -9,6 +9,7 @@ conventions for metrics & labels.
 from prometheus_client import Histogram, Gauge
 
 
+"""
 HTTP_REQUEST_DURATION_SECONDS = Histogram(
     'http_request_duration_seconds',
     'duration in seconds for all HTTP requests',
@@ -25,3 +26,4 @@ KERNEL_CURRENTLY_RUNNING_TOTAL = Gauge(
     'counter for how many kernels are running labeled by type',
     ['type']
 )
+"""

@@ -20,9 +20,17 @@ DEFAULT_TEMPLATE_PATH_LIST = [
     os.path.join(os.path.dirname(__file__), "templates"),
 ]
 
+# Packagers: modify this line if you store the notebook static files elsewhere
+DEFAULT_STATIC_FILES_PATH = os.path.join(os.path.dirname(__file__), "static")
+
 DEFAULT_NOTEBOOK_PORT = 8888
 
 del os
 
 from .nbextensions import install_nbextension
 from ._version import version_info, __version__
+from .notebookapp import NotebookApp
+
+def _jupyter_server_extension_paths():
+    return [{"module": "notebook.notebookapp", "app": NotebookApp}]
+
