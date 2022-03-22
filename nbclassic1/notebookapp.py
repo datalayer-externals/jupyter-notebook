@@ -3,7 +3,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-import notebook
+import nbclassic1
 import asyncio
 import binascii
 import datetime
@@ -65,7 +65,7 @@ from tornado.log import LogFormatter, app_log, access_log, gen_log
 if not sys.platform.startswith('win'):
     from tornado.netutil import bind_unix_socket
 
-from notebook import (
+from nbclassic1 import (
     DEFAULT_NOTEBOOK_PORT,
     DEFAULT_STATIC_FILES_PATH,
     DEFAULT_TEMPLATE_PATH_LIST,
@@ -382,7 +382,7 @@ flags['no-mathjax']=(
 
     MathJax is the javascript library Jupyter uses to render math/LaTeX. It is
     very large, so you may want to disable it if you have a slow internet
-    connection, or for offline use of the notebook.
+    connection, or for offline use of the nbclassic1.
 
     When disabled, equations etc. will appear as their untransformed TeX source.
     """
@@ -432,9 +432,9 @@ aliases.update({
 
 class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
 
-    name = 'notebook'
+    name = 'nbclassic1'
 
-    extension_url = "/notebook/tree"
+    extension_url = "/nbclassic1/tree"
 
     # Should your extension expose other server extensions when launched directly?
     load_other_extensions = True
@@ -476,7 +476,7 @@ class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
         base_dir = os.path.realpath(os.path.join(__file__, '..', '..'))
         dev_mode = os.path.exists(os.path.join(base_dir, '.git'))
 
-        nbui = gettext.translation('nbui', localedir=os.path.join(base_dir, 'notebook/i18n'), fallback=True)
+        nbui = gettext.translation('nbui', localedir=os.path.join(base_dir, 'nbclassic1/i18n'), fallback=True)
         env.install_gettext_translations(nbui, newstyle=True)
         env.install_null_translations(newstyle=False)
         env.install_gettext_callables(gettext.gettext, gettext.ngettext)
@@ -490,11 +490,11 @@ class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
             self.log.info(DEV_NOTE_NPM)
 
         template_settings = dict(
-            notebook_template_paths=template_path,
+            nbclassic1_template_paths=template_path,
             jinja_template_vars=self.jinja_template_vars,
-            notebook_jinja_template_vars=self.jinja_template_vars,
+            nbclassic1_jinja_template_vars=self.jinja_template_vars,
             jinja2_env=env,
-            notebook_jinja2_env=env,
+            nbclassic1_jinja2_env=env,
         )
         self.settings.update(**template_settings)
 
@@ -522,8 +522,8 @@ class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
         # load extra services specified by users before default handlers
         for service in self.settings['extra_services']:
             handlers.extend(load_handlers(service))
-        handlers.extend(load_handlers('notebook.tree.handlers'))
-        handlers.extend(load_handlers('notebook.notebook.handlers'))
+        handlers.extend(load_handlers('nbclassic1.tree.handlers'))
+        handlers.extend(load_handlers('nbclassic1.notebook.handlers'))
         print(handlers)
 
         # Add new handlers to Jupyter server handlers.

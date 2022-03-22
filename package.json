@@ -14,7 +14,7 @@
     "build": "python setup.py js css",
     "build:webpack": "webpack --mode production",
     "build:watch": "npm run watch",
-    "watch": "onchange 'notebook/static/**/!(*.min).js' 'notebook/static/**/*.less' 'bower.json' -- npm run build"
+    "watch": "onchange 'nbclassic1/static/**/!(*.min).js' 'nbclassic1/static/**/*.less' 'bower.json' -- npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

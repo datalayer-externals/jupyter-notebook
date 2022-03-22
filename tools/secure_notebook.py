@@ -9,7 +9,7 @@ the corresponding entries in the notebook json configuration file.
 
 import six
 
-from notebook.auth import passwd
+from nbclassic1.auth import passwd
 from traitlets.config.loader import JSONFileConfigLoader, ConfigFileNotFound
 from jupyter_core.paths import jupyter_config_dir
 from traitlets.config import Config

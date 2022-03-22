@@ -3,8 +3,8 @@ requires=["jupyter_packaging~=0.9"]
 build-backend = "setuptools.build_meta"
 
 [tool.check-manifest]
-ignore = ["docs-translations/**", ".*", "*.yml", "*.less", "git-hooks/**", "MANIFEST.in", "RELEASE.md", "jupyter.svg", "notebook/static/**", "notebook/i18n/**/*.json", "docs/source/*.*"]
-ignore-bad-ideas = ["notebook/i18n/**/*.mo"]
+ignore = ["docs-translations/**", ".*", "*.yml", "*.less", "git-hooks/**", "MANIFEST.in", "RELEASE.md", "jupyter.svg", "nbclassic1/static/**", "nbclassic1/i18n/**/*.json", "docs/source/*.*"]
+ignore-bad-ideas = ["nbclassic1/i18n/**/*.mo"]
 
 [tool.jupyter-releaser]
 skip = ["check-links"]
@@ -14,7 +14,7 @@ after-bump-version = "python setup.py jsversion"
 before-build-python = ["pip install babel", "npm install -g po2json"]
 
 [tool.jupyter-releaser.options]
-ignore-glob = ["docs/source/examples/Notebook/Working With Markdown Cells.ipynb", "docs-translations/**/README.md", "docs/source/contributing.rst", "docs/source/examples/Notebook/JavaScript Notebook Extensions.ipynb", "CHANGELOG.md", "notebook/static/components/**/*.*"]
+ignore-glob = ["docs/source/examples/Notebook/Working With Markdown Cells.ipynb", "docs-translations/**/README.md", "docs/source/contributing.rst", "docs/source/examples/Notebook/JavaScript Notebook Extensions.ipynb", "CHANGELOG.md", "nbclassic1/static/components/**/*.*"]
 
 [tool.tbump.version]
 current = "6.5.0.dev0"
@@ -28,4 +28,4 @@ message_template = "Bump to {new_version}"
 tag_template = "v{new_version}"
 
 [[tool.tbump.file]]
-src = "notebook/_version.py"
+src = "nbclassic1/_version.py"

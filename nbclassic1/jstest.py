@@ -564,7 +564,7 @@ def run_jstestall(options):
                                   nrunners, ', '.join(failed_sections)), took)
         print()
         print('You may wish to rerun these, with:')
-        print('  python -m notebook.jstest', *failed_sections)
+        print('  python -m nbclassic1.jstest', *failed_sections)
         print()
 
     if failed:

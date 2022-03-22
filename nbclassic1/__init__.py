@@ -7,13 +7,13 @@ DEFAULT_STATIC_FILES_PATH = os.path.join(os.path.dirname(__file__), "static")
 # Packagers: modify the next line if you store the notebook template files
 # elsewhere
 
-# Include both notebook/ and notebook/templates/.  This makes it
+# Include both nbclassic1/ and nbclassic1/templates/.  This makes it
 # possible for users to override a template with a file that inherits from that
 # template.
 #
-# For example, if you want to override a specific block of notebook.html, you
-# can create a file called notebook.html that inherits from
-# templates/notebook.html, and the latter will resolve correctly to the base
+# For example, if you want to override a specific block of nbclassic1.html, you
+# can create a file called nbclassic1.html that inherits from
+# templates/nbclassic1.html, and the latter will resolve correctly to the base
 # implementation.
 DEFAULT_TEMPLATE_PATH_LIST = [
     os.path.dirname(__file__),
@@ -32,5 +32,5 @@ from ._version import version_info, __version__
 from .notebookapp import NotebookApp
 
 def _jupyter_server_extension_paths():
-    return [{"module": "notebook.notebookapp", "app": NotebookApp}]
+    return [{"module": "nbclassic1.notebookapp", "app": NotebookApp}]
 

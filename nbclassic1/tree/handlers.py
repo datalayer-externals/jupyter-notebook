@@ -75,6 +75,6 @@ class TreeHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, JupyterHand
 
 
 default_handlers = [
-    (r"/notebook/tree%s" % path_regex, TreeHandler),
-    (r"/notebook/tree", TreeHandler),
+    (r"/nbclassic1/tree%s" % path_regex, TreeHandler),
+    (r"/nbclassic1/tree", TreeHandler),
     ]

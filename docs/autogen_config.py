@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from notebook.notebookapp import NotebookApp
+from nbclassic1.notebookapp import NotebookApp
 
 header = """\
 .. _config:

@@ -1,5 +1,5 @@
 """
-store the current version info of the notebook.
+store the current version info of the nbclassic1.
 
 """
 import re

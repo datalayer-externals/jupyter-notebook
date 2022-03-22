@@ -58,7 +58,7 @@ except NameError:
 # Basic project information
 #---------------------------------------------------------------------------
 
-name = 'notebook'
+name = 'nbclassic1'
 
 # release.py contains version, authors, license, url, keywords, etc.
 version_ns = {}
@@ -110,7 +110,7 @@ def find_package_data():
 
     # walk notebook resources:
     cwd = os.getcwd()
-    os.chdir('notebook')
+    os.chdir('nbclassic1')
     static_data = []
     for parent, dirs, files in os.walk('static'):
         if any(fnmatch(parent, pat) for pat in excludes):
@@ -204,11 +204,11 @@ def find_package_data():
     os.chdir(cwd)
 
     package_data = {
-        'notebook' : ['templates/*'] + static_data,
-        'notebook.tests' : js_tests,
-        'notebook.bundler.tests': ['resources/*', 'resources/*/*', 'resources/*/*/.*'],
-        'notebook.services.api': ['api.yaml'],
-        'notebook.i18n': ['*/LC_MESSAGES/*.*'],
+        'nbclassic1' : ['templates/*'] + static_data,
+        'nbclassic1.tests' : js_tests,
+        'nbclassic1.bundler.tests': ['resources/*', 'resources/*/*', 'resources/*/*/.*'],
+        'nbclassic1.services.api': ['api.yaml'],
+        'nbclassic1.i18n': ['*/LC_MESSAGES/*.*'],
     }
     
     return package_data
@@ -347,7 +347,7 @@ class CompileBackendTranslation(Command):
 
 
     def run(self):
-        paths = glob('notebook/i18n/??_??')
+        paths = glob('nbclassic1/i18n/??_??')
         for p in paths:
             LANG = p[-5:]
             for component in ['notebook', 'nbui']:
@@ -573,7 +573,7 @@ class CompileJS(Command):
         env['PATH'] = npm_path
         pool = ThreadPool()
         pool.map(self.build_main, self.apps)
-        pool.map(self.build_jstranslation, glob('notebook/i18n/??_??'))
+        pool.map(self.build_jstranslation, glob('nbclassic1/i18n/??_??'))
         # update package data in case this created new files
         update_package_data(self.distribution)
 
@@ -590,7 +590,7 @@ class JavascriptVersion(Command):
         pass
     
     def run(self):
-        nsfile = pjoin(repo_root, "notebook", "static", "base", "js", "namespace.js")
+        nsfile = pjoin(repo_root, "nbclassic1", "static", "base", "js", "namespace.js")
         with open(nsfile) as f:
             lines = f.readlines()
         with open(nsfile, 'w') as f:

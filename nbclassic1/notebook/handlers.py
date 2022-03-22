@@ -94,7 +94,7 @@ class NotebookHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, Jupyter
             # not a notebook, redirect to files
             return FilesRedirectHandler.redirect_to_files(self, path)
         name = path.rsplit('/', 1)[-1]
-        self.write(self.render_template('notebook.html',
+        self.write(self.render_template('nbclassic1.html',
             notebook_path=path,
             notebook_name=name,
             kill_kernel=False,
@@ -111,6 +111,6 @@ class NotebookHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, Jupyter
 
 
 default_handlers = [
-    (r"/notebook/notebooks%s" % path_regex, NotebookHandler),
+    (r"/nbclassic1/notebooks%s" % path_regex, NotebookHandler),
 ]
 

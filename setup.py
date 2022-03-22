@@ -13,7 +13,7 @@
 import os
 import sys
 
-name = "notebook"
+name = "nbclassic1"
 
 if sys.version_info < (3, 6):
     pip_message = 'This may be due to an out of date pip. Make sure you have pip >= 9.0.1.'
@@ -68,8 +68,8 @@ from setupbase import (
 
 
 data_files = [
-    ('share/applications', ['jupyter-notebook.desktop']),
-    ('share/icons/hicolor/scalable/apps', ['notebook.svg']),
+    ('share/applications', ['jupyter-nbclassic1.desktop']),
+    ('share/icons/hicolor/scalable/apps', ['nbclassic1.svg']),
  ]
 
 
@@ -82,7 +82,7 @@ share documents that contain live code, equations, visualizations, and
 explanatory text. The Notebook has support for multiple programming
 languages, sharing, and interactive widgets.
 
-Read `the documentation <https://jupyter-notebook.readthedocs.io>`_
+Read `the documentation <https://jupyter-nbclassic1.readthedocs.io>`_
 for more information.
     """,
     long_description_content_type = 'text/markdown',
@@ -139,10 +139,10 @@ for more information.
     python_requires = '>=3.6',
     entry_points = {
         'console_scripts': [
-            'jupyter-notebook = notebook.notebookapp:main',
-            'jupyter-nbextension = notebook.nbextensions:main',
-            'jupyter-serverextension = notebook.serverextensions:main',
-            'jupyter-bundlerextension = notebook.bundler.bundlerextensions:main',
+            'jupyter-notebook = nbclassic1.notebookapp:main',
+            'jupyter-nbextension = nbclassic1.nbextensions:main',
+            'jupyter-serverextension = nbclassic1.serverextensions:main',
+            'jupyter-bundlerextension = nbclassic1.bundler.bundlerextensions:main',
         ]
     },
 )

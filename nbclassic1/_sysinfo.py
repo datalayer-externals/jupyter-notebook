@@ -13,7 +13,7 @@ import subprocess
 
 from ipython_genutils import py3compat, encoding
 
-import notebook
+import nbclassic1
 
 def pkg_commit_hash(pkg_path):
     """Get short form of commit hash given directory `pkg_path`
@@ -76,7 +76,7 @@ def pkg_info(pkg_path):
     """
     src, hsh = pkg_commit_hash(pkg_path)
     return dict(
-        notebook_version=notebook.__version__,
+        notebook_version=nbclassic1.__version__,
         notebook_path=pkg_path,
         commit_source=src,
         commit_hash=hsh,
@@ -91,6 +91,6 @@ def pkg_info(pkg_path):
 def get_sys_info():
     """Return useful information about the system as a dict."""
     p = os.path
-    path = p.realpath(p.dirname(p.abspath(p.join(notebook.__file__))))
+    path = p.realpath(p.dirname(p.abspath(p.join(nbclassic1.__file__))))
     return pkg_info(path)
 

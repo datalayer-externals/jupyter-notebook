@@ -7,8 +7,8 @@ var name = process.argv[2];
 
 var rjs_config = {
   name: name + '/js/main',
-  out: './notebook/static/' + name + '/js/main.min.js',
-  baseUrl: 'notebook/static',
+  out: './nbclassic1/static/' + name + '/js/main.min.js',
+  baseUrl: 'nbclassic1/static',
   preserveLicenseComments: false, // license comments conflict with sourcemap generation
   generateSourceMaps: true,
   optimize: "none",
