@@ -433,11 +433,15 @@ aliases.update({
 class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
 
     name = 'notebook'
+
     extension_url = "/notebook/tree"
+
     # Should your extension expose other server extensions when launched directly?
     load_other_extensions = True
+
     # Local path to static files directory.
     static_paths = [DEFAULT_STATIC_FILES_PATH]
+
     # Local path to templates directory.
     template_paths = DEFAULT_TEMPLATE_PATH_LIST
 
@@ -520,6 +524,7 @@ class NotebookApp(ExtensionAppJinjaMixin, ExtensionApp):
             handlers.extend(load_handlers(service))
         handlers.extend(load_handlers('notebook.tree.handlers'))
         handlers.extend(load_handlers('notebook.notebook.handlers'))
+        print(handlers)
 
         # Add new handlers to Jupyter server handlers.
         self.handlers.extend(handlers)

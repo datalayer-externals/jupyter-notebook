@@ -111,6 +111,6 @@ class NotebookHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, Jupyter
 
 
 default_handlers = [
-    (r"/notebooks%s" % path_regex, NotebookHandler),
+    (r"/notebook/notebooks%s" % path_regex, NotebookHandler),
 ]
 
