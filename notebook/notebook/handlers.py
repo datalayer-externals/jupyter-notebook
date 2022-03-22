@@ -10,8 +10,10 @@ from tornado import (
 )
 HTTPError = web.HTTPError
 
-from ..base.handlers import (
-    IPythonHandler, FilesRedirectHandler, path_regex,
+from jupyter_server.extension.handler import ExtensionHandlerJinjaMixin
+from jupyter_server.extension.handler import ExtensionHandlerMixin
+from jupyter_server.base.handlers import (
+    JupyterHandler, FilesRedirectHandler, path_regex,
 )
 from ..utils import (
     maybe_future, url_escape,
@@ -69,7 +71,7 @@ def get_frontend_exporters():
     return sorted(frontend_exporters)
 
 
-class NotebookHandler(IPythonHandler):
+class NotebookHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, JupyterHandler):
 
     @web.authenticated
     @gen.coroutine

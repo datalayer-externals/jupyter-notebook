@@ -24,7 +24,7 @@ from unittest.mock import patch
 
 from jupyter_core.paths import jupyter_runtime_dir
 from ipython_genutils.py3compat import bytes_to_str, which
-from notebook._sysinfo import get_sys_info
+from jupyter_server._sysinfo import get_sys_info
 from ipython_genutils.tempdir import TemporaryDirectory
 
 from subprocess import TimeoutExpired
@@ -182,7 +182,7 @@ class TestController(object):
 
 
 def get_js_test_dir():
-    import notebook.tests as t
+    import jupyter_server.tests as t
     return os.path.join(os.path.dirname(t.__file__), '')
 
 def all_js_groups():

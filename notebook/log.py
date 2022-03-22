@@ -7,7 +7,6 @@
 
 import json
 from tornado.log import access_log
-from .prometheus.log_functions import prometheus_log_method
 
 
 def log_request(handler, log=access_log, log_json=False):
@@ -57,4 +56,3 @@ def log_request(handler, log=access_log, log_json=False):
         log_method("", extra=dict(props=ns))
     else:
         log_method(msg.format(**ns))
-    prometheus_log_method(handler)
